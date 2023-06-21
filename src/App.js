@@ -33,6 +33,11 @@ function App() {
     setCurrDebits(newDebits);
   };
 
+  const handleCredits = (amount) => {
+    const newCredits = currCredits + amount;
+    setCurrCredits(newCredits);
+  };
+
   return (
     <Router>
       <div className="App">
@@ -78,7 +83,7 @@ function App() {
             element={
               <Credits
                 currCredits={currCredits}
-                setCurrCredits={setCurrCredits}
+                handleCredits={handleCredits}
                 currDebits={currDebits}
               />
             }
