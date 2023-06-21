@@ -1,14 +1,7 @@
 import { useState } from "react";
 import Balance from "./Balance";
-import {
-  Card,
-  CardHeader,
-  Heading,
-  Input,
-  Box,
-  Button,
-  Text,
-} from "@chakra-ui/react";
+//prettier-ignore
+import { Card, CardHeader, Heading, Input, Box, Button, Text } from "@chakra-ui/react";
 
 const Credits = (props) => {
   const [description, setDescription] = useState("");
@@ -67,6 +60,7 @@ const Credits = (props) => {
         </form>
         <Box mt={4}></Box>
         <p> Total Credit: {props.currCredits}</p>
+        <Box mt={4}></Box>
         <Balance
           currCredits={props.currCredits}
           currDebits={props.currDebits}
