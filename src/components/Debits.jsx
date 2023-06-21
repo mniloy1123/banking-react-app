@@ -29,6 +29,7 @@ const Debits = (props) => {
   return (
     <div>
       <h1>Debits</h1>
+      <p>Both Required:</p>
       <form onSubmit={handleSubmit}>
         <input
           type={"text"}
