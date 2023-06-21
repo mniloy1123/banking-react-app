@@ -7,12 +7,14 @@ import {
   Input,
   Box,
   Button,
+  Text,
 } from "@chakra-ui/react";
 
 const Credits = (props) => {
   const [description, setDescription] = useState("");
   const [creditAmount, setCreditAmount] = useState("");
   const [error, setError] = useState(null);
+  const [entries, setEntries] = useState([]);
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -30,10 +32,12 @@ const Credits = (props) => {
     if (description && creditAmount) {
       props.handleCredits(parseFloat(creditAmount));
       setError(null);
+      setEntries([...entries, { description, creditAmount, date: new Date() }]);
       setDescription("");
       setCreditAmount("");
     }
   };
+
   return (
     <div>
       <Card className="contentCard">
@@ -63,13 +67,22 @@ const Credits = (props) => {
         </form>
         <Box mt={4}></Box>
         <p> Total Credit: {props.currCredits}</p>
-        <Box mt={4}></Box>
         <Balance
           currCredits={props.currCredits}
           currDebits={props.currDebits}
         ></Balance>
+        {entries.map((entry, index) => (
+          <Card key={index}>
+            <Box mt={2}></Box>
+            <Text>Description: {entry.description}</Text>
+            <Text>Amount: {entry.creditAmount}</Text>
+            <Text>Date: {entry.date.toLocaleDateString()}</Text>
+            <Box mt={2}></Box>
+          </Card>
+        ))}
       </Card>
     </div>
   );
 };
+
 export default Credits;

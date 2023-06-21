@@ -72,7 +72,7 @@ function App() {
               }
             />
             <Route
-              path="/Debits/*"
+              path="/debits/*"
               element={
                 <Debits
                   currDebits={currDebits}
@@ -82,7 +82,7 @@ function App() {
               }
             />
             <Route
-              path="/Credits/*"
+              path="/credits/*"
               element={
                 <Credits
                   currCredits={currCredits}

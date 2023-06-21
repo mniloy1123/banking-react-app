@@ -1,18 +1,13 @@
 import { useState } from "react";
 import Balance from "./Balance";
-import {
-  Card,
-  CardHeader,
-  Heading,
-  Input,
-  Box,
-  Button,
-} from "@chakra-ui/react";
+//prettier-ignore
+import { Card, CardHeader, Heading, Input, Box, Button, Text } from "@chakra-ui/react";
 
 const Debits = (props) => {
   const [description, setDescription] = useState("");
   const [debitAmount, setDebitAmount] = useState("");
   const [error, setError] = useState(null);
+  const [entries, setEntries] = useState([]);
 
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
@@ -30,6 +25,7 @@ const Debits = (props) => {
     if (description && debitAmount) {
       props.handleDebits(parseFloat(debitAmount));
       setError(null);
+      setEntries([...entries, { description, debitAmount, date: new Date() }]);
       setDescription("");
       setDebitAmount("");
     }
@@ -69,6 +65,15 @@ const Debits = (props) => {
           currCredits={props.currCredits}
           currDebits={props.currDebits}
         ></Balance>
+        {entries.map((entry, index) => (
+          <Card key={index}>
+            <Box mt={2}></Box>
+            <Text>Description: {entry.description}</Text>
+            <Text>Amount: {entry.debitAmount}</Text>
+            <Text>Date: {entry.date.toLocaleDateString()}</Text>
+            <Box mt={2}></Box>
+          </Card>
+        ))}
       </Card>
     </div>
   );
