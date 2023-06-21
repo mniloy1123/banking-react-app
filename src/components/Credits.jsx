@@ -38,6 +38,7 @@ const Credits = (props) => {
           <Heading size="lg">Credit</Heading>
         </CardHeader>
         <p>Both Required:</p>
+        <Box mt={4}></Box>
         <form onSubmit={handleSubmit}>
           <Input
             type={"text"}
