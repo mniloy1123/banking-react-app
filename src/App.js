@@ -58,8 +58,26 @@ function App() {
               />
             }
           />
-          <Route path="/debits/*" element={<Debits />} />
-          <Route path="/credits/*" element={<Credits />} />
+          <Route
+            path="/Debits/*"
+            element={
+              <Debits
+                currDebits={currDebits}
+                setCurrDebits={setCurrDebits}
+                currCredits={currCredits}
+              />
+            }
+          />
+          <Route
+            path="/Credits/*"
+            element={
+              <Credits
+                currCredits={currCredits}
+                setCurrCredits={setCurrCredits}
+                currDebits={currDebits}
+              />
+            }
+          />
           <Route
             path="/balance/*"
             element={
