@@ -10,27 +10,23 @@ function App() {
   const [currDebits, setCurrDebits] = useState(0);
   const [currCredits, setCurrCredits] = useState(0);
 
-  useEffect (() => {
+  useEffect(() => {
     async function fetchDebitData() {
       const res = await axios.get(
         `https://bank-of-react-b745wfs0u-ajlapid718.vercel.app/debits`
-      )
+      );
       setCurrDebits(res.data);
-      console.log(res.data);
-      }
-  fetchDebitData();
+    }
+    fetchDebitData();
 
-  async function fetchCreditData() {
-    const res = await axios.get(
-      `https://bank-of-react-b745wfs0u-ajlapid718.vercel.app/credits`
-    )
-    setCurrCredits(res.data);
-  }
-  fetchCreditData();
+    async function fetchCreditData() {
+      const res = await axios.get(
+        `https://bank-of-react-b745wfs0u-ajlapid718.vercel.app/credits`
+      );
+      setCurrCredits(res.data);
+    }
+    fetchCreditData();
   }, []);
-
-
-
 
   return (
     <Router>
@@ -51,9 +47,28 @@ function App() {
 
         {/* Routes */}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <Home
+                currDebits={currDebits}
+                setCurrDebits={setCurrDebits}
+                currCredits={currCredits}
+                setCurrCredits={setCurrCredits}
+              />
+            }
+          />
           <Route path="/debits/*" element={<Debits />} />
           <Route path="/credits/*" element={<Credits />} />
+          <Route
+            path="/balance/*"
+            element={
+              <Balance
+                currCreditData={currCredits}
+                currDebitData={currDebits}
+              />
+            }
+          />
         </Routes>
       </div>
     </Router>

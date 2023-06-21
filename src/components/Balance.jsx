@@ -1,8 +1,7 @@
-const Balance = () => {
+const Balance = (props) => {
     return (
         <div className="balance">
-            <h2>Your Balance</h2>
-            <h3>$0.00</h3>
+            <p>Balance: {props.currCredits - props.currDebits}</p>
         </div>
     )
 }
