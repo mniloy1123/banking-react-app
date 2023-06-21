@@ -28,6 +28,11 @@ function App() {
     fetchCreditData();
   }, []);
 
+  const handleDebits = (amount) => {
+    const newDebits = currDebits + amount;
+    setCurrDebits(newDebits);
+  };
+
   return (
     <Router>
       <div className="App">
@@ -63,7 +68,7 @@ function App() {
             element={
               <Debits
                 currDebits={currDebits}
-                setCurrDebits={setCurrDebits}
+                handleDebits={handleDebits}
                 currCredits={currCredits}
               />
             }
@@ -81,10 +86,7 @@ function App() {
           <Route
             path="/balance/*"
             element={
-              <Balance
-                currCreditData={currCredits}
-                currDebitData={currDebits}
-              />
+              <Balance currCredits={currCredits} currDebits={currDebits} />
             }
           />
         </Routes>
