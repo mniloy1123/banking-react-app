@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Debits from "./components/Debits";
 import Credits from "./components/Credits";
 import Balance from "./components/Balance";
+import "./App.css";
 
 function App() {
   const [currDebits, setCurrDebits] = useState(0);
@@ -41,7 +42,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
+        <nav className="navbar">
           <ul>
             <li>
               <Link to="/">Home</Link>
