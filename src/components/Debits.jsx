@@ -1,5 +1,13 @@
 import { useState } from "react";
 import Balance from "./Balance";
+import {
+  Card,
+  CardHeader,
+  Heading,
+  Input,
+  Box,
+  Button,
+} from "@chakra-ui/react";
 
 const Debits = (props) => {
   const [description, setDescription] = useState("");
@@ -28,29 +36,40 @@ const Debits = (props) => {
   };
   return (
     <div>
-      <h1>Debits</h1>
-      <p>Both Required:</p>
-      <form onSubmit={handleSubmit}>
-        <input
-          type={"text"}
-          value={description}
-          onChange={handleDescriptionChange}
-          placeholder="Description"
-        />
-        <input
-          type={"text"}
-          value={debitAmount}
-          onChange={handleDebitAmountChange}
-          placeholder="Amount"
-        />
-        <input type="submit" value="Submit" />
-        {error && <p>{error}</p>}
-      </form>
-      <p> Total Debit: {props.currDebits}</p>
-      <Balance
-        currCredits={props.currCredits}
-        currDebits={props.currDebits}
-      ></Balance>
+      <Card className="contentCard">
+        <CardHeader>
+          <Heading size="lg">Debit</Heading>
+        </CardHeader>
+        <p>Both Required:</p>
+        <Box mt={4}></Box>
+        <form onSubmit={handleSubmit}>
+          <Input
+            type={"text"}
+            value={description}
+            onChange={handleDescriptionChange}
+            placeholder="Description"
+          />
+          <Box mt={4}></Box>
+          <Input
+            type={"text"}
+            value={debitAmount}
+            onChange={handleDebitAmountChange}
+            placeholder="Amount"
+          />
+          <Box mt={4}></Box>
+          <Button type="submit" value="Submit" colorScheme="blue">
+            Submit
+          </Button>
+          {error && <p>{error}</p>}
+        </form>
+        <Box mt={4}></Box>
+        <p> Total Debit: {props.currDebits}</p>
+        <Box mt={4}></Box>
+        <Balance
+          currCredits={props.currCredits}
+          currDebits={props.currDebits}
+        ></Balance>
+      </Card>
     </div>
   );
 };

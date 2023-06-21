@@ -1,14 +1,19 @@
 import Balance from "./Balance";
+import { Card, CardHeader, Heading } from "@chakra-ui/react";
 const Home = (props) => {
   return (
     <div className="home">
-      <h1>Bank of Murica</h1>
-      <Balance
-        currCredits={props.currCredits}
-        currDebits={props.currDebits}
-      ></Balance>
-      <p>Debit: {props.currDebits}</p>
-      <p>Credit: {props.currCredits}</p>
+      <Card className="contentCard">
+        <CardHeader>
+          <Heading size="lg">Bank of Murica</Heading>
+        </CardHeader>
+        <Balance
+          currCredits={props.currCredits}
+          currDebits={props.currDebits}
+        ></Balance>
+        <p>Debit: {props.currDebits}</p>
+        <p>Credit: {props.currCredits}</p>
+      </Card>
     </div>
   );
 };

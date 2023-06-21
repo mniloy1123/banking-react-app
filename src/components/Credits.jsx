@@ -1,5 +1,13 @@
 import { useState } from "react";
 import Balance from "./Balance";
+import {
+  Card,
+  CardHeader,
+  Heading,
+  Input,
+  Box,
+  Button,
+} from "@chakra-ui/react";
 
 const Credits = (props) => {
   const [description, setDescription] = useState("");
@@ -28,29 +36,39 @@ const Credits = (props) => {
   };
   return (
     <div>
-      <h1>Credit</h1>
-      <p>Both Required:</p>
-      <form onSubmit={handleSubmit}>
-        <input
-          type={"text"}
-          value={description}
-          onChange={handleDescriptionChange}
-          placeholder="Description"
-        />
-        <input
-          type={"text"}
-          value={creditAmount}
-          onChange={handleCreditAmountChange}
-          placeholder="Amount"
-        />
-        <input type="submit" value="Submit" />
-        {error && <p>{error}</p>}
-      </form>
-      <p> Total Credit: {props.currCredits}</p>
-      <Balance
-        currCredits={props.currCredits}
-        currDebits={props.currDebits}
-      ></Balance>
+      <Card className="contentCard">
+        <CardHeader>
+          <Heading size="lg">Credit</Heading>
+        </CardHeader>
+        <p>Both Required:</p>
+        <form onSubmit={handleSubmit}>
+          <Input
+            type={"text"}
+            value={description}
+            onChange={handleDescriptionChange}
+            placeholder="Description"
+          />
+          <Box mt={4}></Box>
+          <Input
+            type={"text"}
+            value={creditAmount}
+            onChange={handleCreditAmountChange}
+            placeholder="Amount"
+          />
+          <Box mt={4}></Box>
+          <Button type="submit" value="Submit" colorScheme="blue">
+            Submit
+          </Button>
+          {error && <p>{error}</p>}
+        </form>
+        <Box mt={4}></Box>
+        <p> Total Credit: {props.currCredits}</p>
+        <Box mt={4}></Box>
+        <Balance
+          currCredits={props.currCredits}
+          currDebits={props.currDebits}
+        ></Balance>
+      </Card>
     </div>
   );
 };
